@@ -3,22 +3,22 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// =-=-=-=-=-=-=-=-= GLOBAL ARRAYS and VARIABLES =-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-= GLOBAL ARRAYS and VARIABLES =-=-=-=-=-=-=-=-=-=
 let quotes = [
   {
-    quote: "I have not yet begun to code",
+    quote: "I have not yet begun to code.",
     source: "Patrick Henry Jones",
     citation: "Twitter",
     year: "1775",
     category: "Things people would have tweeted, if that was a thing"
   },
   {
-    quote: "You can't handle the truth",
+    quote: "You can't handle the truth!",
     source: "Jack Nicholson",
     category: "Things people say in old movies"
   },
   {
-    quote: "tenpo suno ni o pona tawa sina",
+    quote: "tenpo suno ni o pona tawa sina.",
     source: "Me",
     citation: "Just now... in Toki Pona",
     category: "Things people say at conlang conventions"
@@ -39,13 +39,44 @@ let quotes = [
     quote: "Uh oh!",
     source: "Your Doctor",
     category: "Things your doctor shouldn't say"
+  },
+  {
+    quote:
+      "Life is suffering. Suffering is caused by desire. Desire can be overcome.",
+    source: "Siddhartha Gautama",
+    category: "Religion"
+  },
+  {
+    quote: "There are no traffic jams along the extra mile.",
+    source: "Roger Staubach",
+    category: "Things competitive people say"
+  },
+  {
+    quote: "I'm sorry, if you were right, I'd agree with you.",
+    source: "Robin Williams",
+    category: "Things I agree with"
+  },
+  {
+    quote: "Unexpected token on line 60",
+    source: "Javascript",
+    citation: "script.js",
+    year: "2019",
+    category:
+      "Things the Javascript console says when you miss a semicolon on line 59"
+  },
+  {
+    quote: "This is the last quote.",
+    source: "JL Hoover",
+    citation: "The quotes object array in A Random Quote Generator",
+    year: "2019",
+    category: "Things I put in my code"
   }
 ];
 
-// make interval visible so timer can be turned off
-var interval = false;
+// make interval globally visible so timer can be turned off
+let interval = false;
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 function getRandomQuote() {
   // generate a random number between 0 and the length of the array
   let random = Math.floor(Math.random() * quotes.length);
@@ -54,7 +85,7 @@ function getRandomQuote() {
   return quotes[random];
 }
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 function printQuote() {
   // declare variables
   let hypertext = "";
@@ -79,11 +110,12 @@ function printQuote() {
 
   // jam it into the DOM. Take that, DOM!
   document.getElementById("quote-box").innerHTML = hypertext;
+
   // change the background color to something still raedable
   changeColor();
 }
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 function changeColor() {
   // an array of darkish colors
   colors = [
@@ -107,11 +139,12 @@ function changeColor() {
   ];
   // generate a random number
   let random = Math.floor(Math.random() * colors.length);
+
   // use the random number to change the bg color
   document.querySelector("body").style.backgroundColor = colors[random];
 }
 
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 function activateTimer() {
   // get the state of the checkbox
   checked = document.getElementById("chkTimer").checked;
@@ -124,6 +157,7 @@ function activateTimer() {
   }
 
   if (notChecked) {
+    // clear the setInterval timer
     clearInterval(interval);
   }
 }
